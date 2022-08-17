@@ -7,14 +7,14 @@ menu.onclick = () => {
     navbar.classList.toggle('active');
 }
 
-// mostrar y ocultar el form con el boton del nav
-document.querySelector('#login-btn').onclick = () =>{
-    document.querySelector('.login-form-container').classList.toggle('active');
-  }
+// // mostrar y ocultar el form con el boton del nav
+// document.querySelector('#login-btn').onclick = () =>{
+//     document.querySelector('.login-form-container').classList.toggle('active');
+//   }
 
-  document.querySelector('#close-login-form').onclick = () =>{
-    document.querySelector('.login-form-container').classList.remove('active');
-  }
+//   document.querySelector('#close-login-form').onclick = () =>{
+//     document.querySelector('.login-form-container').classList.remove('active');
+//   }
 
 // funcion para mostrar, en deskstop, una sombra cuando el usuario escrolea
 window.onscroll = () => {
@@ -150,3 +150,24 @@ document.querySelector('.home').onmouseleave = () =>{
   });
 
 
+//--------------------------------------------------------------------------
+// js para el trabajo practico 2 
+
+// variables 
+
+let user = '';
+
+let visits = 0;
+
+if (localStorage.getItem('user') != null){
+  let userName = localStorage.getItem('user');
+  document.querySelector('#btnlg').innerHTML = `Bienvenido ${userName}`;
+
+}
+
+document.querySelector('#login-btn').onclick = () =>{
+    user = prompt('Por favor ingrese su nombre');
+    localStorage.setItem('user', user);
+    let userName = localStorage.getItem('user');
+    document.querySelector('#btnlg').innerHTML = `Bienvenido ${userName}`;
+}
