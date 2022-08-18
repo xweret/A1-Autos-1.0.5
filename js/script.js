@@ -163,6 +163,7 @@ if (localStorage.getItem('user') != null){
   let userName = localStorage.getItem('user');
   document.querySelector('#btnlg').innerHTML = `Bienvenido ${userName}`;
 
+
 }
 
 document.querySelector('#login-btn').onclick = () =>{
@@ -171,3 +172,24 @@ document.querySelector('#login-btn').onclick = () =>{
     let userName = localStorage.getItem('user');
     document.querySelector('#btnlg').innerHTML = `Bienvenido ${userName}`;
 }
+
+//contador de visitas 
+
+let cantidadVisitas = localStorage.getItem('visitas') || 0;
+
+function incrementarContador(){
+  cantidadVisitas = JSON.parse(cantidadVisitas) + 1;
+  localStorage.setItem('visitas', cantidadVisitas);
+  console.log(cantidadVisitas);
+}
+incrementarContador();
+
+function mostrarVisitas(){
+  if (localStorage.getItem('user') == null){
+    document.querySelector('.tooltiptext').innerHTML = 'ingrese para contar las visitas';
+  }else{
+    document.querySelector('.tooltiptext').innerHTML = `Visitas: ${localStorage.getItem('visitas')}`;
+  }
+
+}
+mostrarVisitas();
